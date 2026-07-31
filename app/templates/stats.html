@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="card">
+    <h2>Статистика</h2>
+    <p>Средняя степень: {{ average_degree }}</p>
+    <p>Диаметр: {{ diameter }}</p>
+    <p>Случайное рукопожатие: {% if random_edge %}{{ random_edge.nick1 }} ↔ {{ random_edge.nick2 }}{% else %}нет данных{% endif %}</p>
+    <ul>
+        {% for nick, degree in degree_map.items() %}
+            <li>{{ nick }} — степень {{ degree }}</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

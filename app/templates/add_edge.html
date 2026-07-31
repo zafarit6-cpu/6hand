@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content %}
+<form class="card" method="post">
+    <h2>Добавить связь</h2>
+    <div class="grid-2">
+        <label>Ник 1
+            <input type="text" name="nick1" required>
+        </label>
+        <label>Ник 2
+            <input type="text" name="nick2" required>
+        </label>
+    </div>
+    <label>Роль
+        <input type="text" name="role" required>
+    </label>
+    <label>Ссылка на аватар / иконку
+        <input type="url" name="avatar_url" placeholder="https://...">
+    </label>
+    <button class="button" type="submit">Сохранить</button>
+</form>
+{% endblock %}

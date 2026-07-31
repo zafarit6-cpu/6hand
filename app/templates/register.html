@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %}
+<form class="card" method="post">
+    <h2>Регистрация</h2>
+    <label>Никнейм
+        <input type="text" name="username" required>
+    </label>
+    <label>Пароль
+        <input type="password" name="password" required>
+    </label>
+    <label>Email (необязательно)
+        <input type="email" name="email">
+    </label>
+    <label>Discord tag (необязательно)
+        <input type="text" name="discord_tag">
+    </label>
+    <button class="button" type="submit">Создать аккаунт</button>
+</form>
+{% endblock %}

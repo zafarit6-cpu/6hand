@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="card">
+    <h2>Профиль</h2>
+    <p>Добавлено связей: {{ user_edges }}</p>
+    <p>Уровень: {{ level }}</p>
+    {% if achievements %}
+        <p>Достижения: {{ achievements | join(', ') }}</p>
+    {% else %}
+        <p>Достижения: пока нет</p>
+    {% endif %}
+</div>
+{% endblock %}

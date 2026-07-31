@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block content %}
+<form class="card" method="post" enctype="multipart/form-data">
+    <h2>Импорт CSV</h2>
+    <p>Ожидаемые колонки: nick1, nick2, role</p>
+    <input type="file" name="file" accept=".csv" required>
+    <button class="button" type="submit">Импортировать</button>
+</form>
+{% endblock %}

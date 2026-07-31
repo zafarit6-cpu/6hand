@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Revolve 6 Hand</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="shell">
+        <header class="topbar">
+            <div>
+                <h1>Revolve 6 Hand</h1>
+                <p class="subline">Соцграф для Discord-энергии и кибер-рукопожатий</p>
+            </div>
+            <nav class="nav-links">
+                <a href="{{ url_for('main.index') }}">Главная</a>
+                {% if current_user.is_authenticated %}
+                    <a href="{{ url_for('main.profile') }}">Профиль</a>
+                    <a href="{{ url_for('main.add_edge') }}">Связи</a>
+                    <a href="{{ url_for('main.search') }}">Поиск</a>
+                    <a href="{{ url_for('main.path') }}">Путь</a>
+                    <a href="{{ url_for('main.stats') }}">Статистика</a>
+                    <a href="{{ url_for('main.visualize') }}">Визуализация</a>
+                    <a href="{{ url_for('main.import_csv') }}">CSV</a>
+                    <a href="{{ url_for('main.logout') }}">Выйти</a>
+                {% else %}
+                    <a href="{{ url_for('main.login') }}">Войти</a>
+                    <a href="{{ url_for('main.register') }}">Регистрация</a>
+                {% endif %}
+            </nav>
+        </header>
+        <main>
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    <ul class="flash-list">
+                        {% for message in messages %}
+                            <li>{{ message }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            {% endwith %}
+            {% block content %}{% endblock %}
+        </main>
+    </div>
+</body>
+</html>

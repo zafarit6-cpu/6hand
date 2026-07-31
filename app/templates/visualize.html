@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="card">
+    <h2>Интерактивная визуализация</h2>
+    <div id="cy" class="graph"></div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.29.2/cytoscape.min.js"></script>
+<script>
+    const elements = [];
+    const nodes = new Set();
+    {% for edge in edges %}
+        nodes.add('{{ edge.nick1 }}');
+        nodes.add('{{ edge.nick2 }}');
+        elements.push({ data: { id: '{{ edge.nick1 }}', label: '{{ edge.nick1 }}' } });
+        elements.push({ data: { id: '{{ edge.nick2 }}', label: '{{ edge.nick2 }}' } });
+        elements.push({ data: { id: '{{ edge.nick1 }}-{{ edge.nick2 }}', source: '{{ edge.nick1 }}', target: '{{ edge.nick2 }}', label: '{{ edge.role }}' } });
+    {% endfor %}
+    const uniqueNodes = Array.from(nodes).map(id => ({ data: { id, label: id } }));
+    const cy = cytoscape({
+        container: document.getElementById('cy'),
+        elements: [...uniqueNodes, ...elements.filter(item => item.data.source)],
+        style: [
+            { selector: 'node', style: { 'background-color': '#00f0ff', 'label': 'data(label)', 'color': '#fff', 'text-valign': 'center' } },
+            { selector: 'edge', style: { 'width': 2, 'line-color': '#ff00aa', 'target-arrow-color': '#ff00aa', 'curve-style': 'bezier' } }
+        ],
+        layout: { name: 'cose' }
+    });
+</script>
+{% endblock %}

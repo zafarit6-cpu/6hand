@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="card">
+    <h2>Поиск соседей</h2>
+    <form method="get">
+        <input type="text" name="q" value="{{ query }}" placeholder="Введите ник">
+        <button class="button" type="submit">Искать</button>
+    </form>
+    {% if neighbors %}
+        <ul class="list-stack">
+            {% for nick, role, is_transitive in neighbors %}
+                <li class="list-item">
+                    <span class="icon">🔗</span>
+                    <span>{{ nick }} — {{ role }} {% if is_transitive %}(транзитивная){% endif %}</span>
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+</div>
+{% endblock %}

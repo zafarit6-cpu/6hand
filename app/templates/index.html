@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="hero">
+    <div class="hero-badge">⚡ Revolve Network</div>
+    <h2>Социальный граф для Discord-режима</h2>
+    <p>Собирайте связи, добавляйте аватар-элементы и делайте сеть заметнее.</p>
+    <div class="hero-actions">
+        <a class="button" href="{{ url_for('main.register') }}">Начать</a>
+        <a class="button secondary" href="https://discord.gg/revolve" target="_blank" rel="noreferrer">Discord Revolve</a>
+    </div>
+    <div class="pill-row">
+        <span class="pill">⚡ Лови связи в моменте</span>
+        <span class="pill">🔗 Быстрый вайб и нет лишнего</span>
+        <span class="pill">✨ Сеть, что реально заходит</span>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="card">
+    <h2>Кратчайший путь</h2>
+    <form method="get">
+        <input type="text" name="nick1" value="{{ nick1 }}" placeholder="Ник 1">
+        <input type="text" name="nick2" value="{{ nick2 }}" placeholder="Ник 2">
+        <button class="button" type="submit">Найти путь</button>
+    </form>
+    {% if path_result %}
+        <p>Путь: {{ path_result | join(' → ') }}</p>
+    {% else %}
+        <p>Путь не найден.</p>
+    {% endif %}
+</div>
+{% endblock %}
